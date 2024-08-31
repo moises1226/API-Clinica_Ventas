@@ -1,0 +1,12 @@
+#Usamos la imagen a base de openjdk 21 de un medio azul
+FROM openjdk:21
+#le inidicamos donde va a estar nuestro archivo jar y su respectivo nombre , q seria nuestra carpeta del proyecto
+ARG JAR_FILE=target/clinicaVet-0.0.1.jar
+#copiamos el JAR_FILE y le ponemos otro nombre
+COPY ${JAR_FILE} app_veterinaria.jar
+#le indicamos en que puerto quremos q se abra nuestra app
+EXPOSE 8080
+#le indicamos lo que tiene q hacer docker para aramar la imagen
+# |Inidcamos que estamos utlizandoJAVA| |que es un archivo .jar| |x ultimo ejecutamos nuestro archivo app_veterinaria.jar|
+ENTRYPOINT ["java" , "-jar" , "app_veterinaria.jar"]
+
